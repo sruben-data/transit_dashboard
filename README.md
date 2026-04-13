@@ -10,12 +10,13 @@
 # Metrics
 1. Completion Rate
 2. Occupancy Rate
-3. Average Wait Time (Median, 85th Percentile)
-4. On-Time Status (+/- 5 min) & Performance
-5. Vehicle Utilization Rate (hours)
-6. Trips per Vehicle-Hour -> Trip Capacity Utilization Rate
-7. Trips per Day
-8. Weekly Demand
-9. Peak Vehicles
-10. Max Wait Time
-11. Total Cost (based on charged by vehicle-hour) and Cost per Trip
+3. Quoted Wait Time (Request time vs Quoted pickup time)
+4. Average Wait Time (Median, 85th Percentile)
+5. Max Wait Time
+6. On-Time Status (+/- 5 min) & Performance
+7. Vehicle Utilization Rate (hours)
+8. Trips per Vehicle-Hour -> Trip Capacity Utilization Rate
+9. Trips per Day
+10. Weekly Demand
+11. Peak Vehicles
+12. Total Cost (based on charged by vehicle-hour) and Cost per Trip
