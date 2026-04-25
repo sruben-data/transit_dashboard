@@ -1,5 +1,10 @@
 # transit_dashboard
 
+# Tech Stack
+1. PostgreSQL
+2. Python
+3. Looker Studio
+
 # Dashboard Views & Grain
 1. Daily Service Health
 2. Hourly Coverage & Wait Times - all-time, by day of the week
