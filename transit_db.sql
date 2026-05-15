@@ -3,6 +3,7 @@ This script
 */
 
 /* Interactive psql setup commands
+-- Open
 -- Create the database in interactive psql session
 psql -U postgres -c "CREATE DATABASE transit_ops;" *semi-colon is statement terminator
 OR
@@ -11,7 +12,7 @@ OR
 3. \q
 
 -- Load tables and data
-psql -U postgres -d haunted_house_escape -f "C:\full_file_path" *This is a placeholder path
+psql -U postgres -d transit_ops -f "C:\full_file_path" *This is a placeholder path
 OR
 1. psql -U postgres
 2. \i "C:\full_file_path"
