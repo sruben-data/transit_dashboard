@@ -1,21 +1,29 @@
 /*
-This script
+This script creates the transit_dashboard database in PostgreSQL, containing 8 tables in total:
+    1 Fact table - trips
+    7 Dimension tables - riders, drivers, vehicles, shifts, zone, date, time of day
+
 */
 
 /* Interactive psql setup commands
--- Open
+psql --help
+createdb --help
+dropdb --help
+
 -- Create the database in interactive psql session
-psql -U postgres -c "CREATE DATABASE transit_ops;" *semi-colon is statement terminator
+psql -U postgres -c 'CREATE DATABASE transit_ops;' *semi-colon is statement terminator
 OR
 1. psql -U postgres
 2. CREATE DATABASE transit_ops;
 3. \q
 
 -- Load tables and data
-psql -U postgres -d transit_ops -f "C:\full_file_path" *This is a placeholder path
+psql -U postgres -d transit_ops -f 'C:\full_file_path' *This is a placeholder path
 OR
 1. psql -U postgres
-2. \i "C:\full_file_path"
+2. \i 'C:\full_file_path'
+
+full path = 'C:\Users\samue\code\Projects\transit_dashboard\transit_db.sql'
 */
 
 -- Create dimension tables (in order of foreign key dependencies)
@@ -27,7 +35,7 @@ CREATE TABLE dim_riders (
             WHEN rider_type = 'general' THEN 1
             ELSE 2 -- paratransit riders take up two seats (one row)
         END
-    )
+    ),
 
     CONSTRAINT valid_rider_type CHECK(rider_type IN('general', 'paratransit'))
 );
@@ -60,7 +68,7 @@ CREATE TABLE dim_shifts (
     CONSTRAINT FK_driver_shifts FOREIGN KEY (driver_id)
     REFERENCES dim_drivers(driver_id),
     CONSTRAINT FK_vehicle_shifts FOREIGN KEY (vehicle_id)
-    REFERENCES dim_vehicles(vehicle_id),
+    REFERENCES dim_vehicles(vehicle_id)
 );
 
 CREATE TABLE dim_zone (
@@ -81,7 +89,7 @@ CREATE TABLE dim_zone (
 */
 CREATE TABLE dim_date (
     trip_date DATE,
-    day_of_week VARCHAR(10) NOT,
+    day_of_week VARCHAR(10) NOT NULL,
     is_weekday BOOLEAN NOT NULL,
     is_weekend BOOLEAN NOT NULL,
     PRIMARY KEY (trip_date, day_of_week), -- Composite Primary Key
